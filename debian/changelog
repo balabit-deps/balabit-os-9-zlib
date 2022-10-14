@@ -1,3 +1,17 @@
+zlib (1:1.2.11.dfsg-2ubuntu9.2) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: heap-based buffer over-read (LP: #1988548)
+    - debian/patches/CVE-2022-37434-1.patch: in inflate.c, add an extra
+      condition to check if state->head->extra_max is greater than len
+      before copying, and move the len assignment to be placed before the
+      check.
+    - debian/patches/CVE-2022-37434-2.patch: in the previous patch, in
+      inflate.c, the place of the len assignment was causing issues so it
+      was moved to be placed within the check.
+    - CVE-2022-37434
+
+ -- Rodrigo Figueiredo Zaiden <rodrigo.zaiden@canonical.com>  Fri, 14 Oct 2022 18:33:00 -0300
+
 zlib (1:1.2.11.dfsg-2ubuntu9.1) jammy; urgency=medium
 
   * d/p/410-lp1961427.patch ported from zlib #410, fixing
